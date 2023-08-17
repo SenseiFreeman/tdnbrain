@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div>
+      <header>
+        TĐN
+        <img height="100" src="./tdnbrain.svg" />
+        Brain
+      </header>
+      <main>
+        <center>A way to build your neural network</center>
+        <h2>Prepare your data</h2>
+        <p>We use data in csv format. Any column begins with 'i' is the input column. Any column begins with 'o' is the output column. Value of the output columns should be zero or one.</p>
+
+        <div id="data-drop">Drop your data here.</div>
+
+        <h2>Config your neural network</h2>
+        <div class="configs">
+          <h3>Network Config</h3>
+          <label>Hidden layers (a array of numbers in json format)</label>
+          <input id="layers" type="text" value="[5, 4, 3]" />
+          <label>Activation function in network</label>
+          <select id="activation">
+            <option value="sigmoid">Sigmoid</option>
+            <option value="relu">Relu</option>
+            <option value="tanh">Tanh</option>
+          </select>
+        </div>
+
+        <div class="configs">
+          <h3>Training Config</h3>
+          <label>Iterations</label>
+          <input id="iterations" type="number" value="50000" step="1000"/>
+          <label>Error Threshold</label>
+
+          <input id="error" type="number" value="0.05" min="0.005" max="1" step="0.05"/>
+
+          <label>Learning rate</label>
+          <input id="rate" type="number" value="0.5" min="0" max="1" step="0.05"/>
+
+          <label>Momentum</label>
+          <input id="momentum" type="number" value="0.125" min="0" max="1" step="0.125"/>
+        </div>
+
+        <h2>Training</h2>
+        <p>Press the button to begin training your network</p>
+        <button id="train">Train</button>
+
+        <h2>Result</h2>
+        <p>Your network data will appear here in json format ready for you to copy</p>
+        <textarea id="result" rows="20" readonly></textarea>
+
+        <h2>Predict with network</h2>
+        <p>Once trained, the network can be use to predicts values</p>
+        <div id="input"></div>
+        <div id="output"></div>
+      </main>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
