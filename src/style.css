@@ -279,7 +279,6 @@ button {
   color: darkgoldenrod;
 }
 
-
 input:hover,
 select:hover,
 textarea:hover,
@@ -287,7 +286,7 @@ button:not(:disabled):hover,
 [type="button"]:not(:disabled):hover,
 [type="submit"]:not(:disabled):hover,
 [type="reset"]:not(:disabled):hover {
-    background-color: rgba(255, 255, 255, 0.375);
+  background-color: rgba(255, 255, 255, 0.375);
 }
 
 input:not(:disabled):active,
@@ -297,8 +296,8 @@ button:not(:disabled):active,
 [type="button"]:not(:disabled):active,
 [type="reset"]:not(:disabled):active,
 [type="submit"]:not(:disabled):active {
-    background-color: rgba(255, 255, 255, 0.5);
-    color: gold;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: gold;
 }
 
 input:disabled,
@@ -309,7 +308,7 @@ button:disabled,
 [type="reset"]:disabled,
 [type="submit"]:disabled {
   background-color: rgba(255, 255, 255, 0.0625);
-  color: rgba(0, 0, 0, 0.0625); 
+  color: rgba(0, 0, 0, 0.0625);
 }
 
 input:focus,
@@ -320,17 +319,16 @@ button:focus {
   color: goldenrod;
 }
 
-
-center{
-    text-align: center;
+center {
+  text-align: center;
 }
 
-left{
-    text-align: left;
+left {
+  text-align: left;
 }
 
-right{
-    text-align: right;
+right {
+  text-align: right;
 }
 
 body {
@@ -339,18 +337,25 @@ body {
   font-family: cascadia code, consolas, monospace;
 }
 
-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    color: black;
-    background-color: yellow;
-    padding: 0.5rem;
+#errlog {
+  color: yellow;
+  background-color: black;
+  padding: 2rem;
+  min-width: 100vmin;
 }
 
-header>img{
-    margin: 1rem;
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: black;
+  background-color: yellow;
+  padding: 0.5rem;
+}
+
+header > img {
+  margin: 1rem;
 }
 
 main {
@@ -362,28 +367,28 @@ main {
   padding: 1rem;
 }
 
-main>*{
-    margin: 0;
+main > * {
+  margin: 0;
 }
 
-#data-drop{
-    height: 8rem;
-    border: yellow dotted 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#data-drop {
+  height: 8rem;
+  border: yellow dotted 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.configs{
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+.configs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .configs > * {
-    margin: 0;
+  margin: 0;
 }
 
 .configs > label {
-    color: limegreen;
+  color: limegreen;
 }
