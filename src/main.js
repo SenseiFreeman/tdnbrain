@@ -23,8 +23,8 @@ document.documentElement.addEventListener("drop", preventEventDefault);
 let data = null;
 let net = null;
 let dataZone = document.querySelector("#data-drop");
-let inputZone = document.querySelectorAll("#input");
-let outputZone = document.querySelectorAll("#output");
+let inputZone = document.querySelector("#input");
+let outputZone = document.querySelector("#output");
 let ui = {};
 
 for (let el of document.querySelectorAll("button[id], input[id], select[id], textarea[id")) ui[el.id] = el;
@@ -91,12 +91,12 @@ dataZone.addEventListener("drop", async function (e) {
             }
 
             data = { inputKeys, outputKeys, sample: results };
+
+            dataZone.textContent = "Data loaded";
         }
     } catch (exc) {
         dataZone.textContent = exc.message;
     }
-
-    dataZone.textContent = "Data loaded";
 });
 
 ui.train.addEventListener("click", function () {
@@ -144,8 +144,46 @@ ui.train.addEventListener("click", function () {
         ui.train.textContent = "Train";
         ui.train.disabled = false;
 
-        ui.result.textContent = JSON.stringify(candidate.toJSON());
+        ui.result.textContent = JSON.stringify(candidate.toJSON(), null, 4);
+
+        for (let key of data.inputKeys) {
+            inputZone.appendChild(document.createElement("label")).textContent = key;
+
+            let inp = inputZone.appendChild(document.createElement("input"));
+
+            inp.type = "number";
+            inp.setAttribute("key", key);
+        }
+
+        for (let key of data.outputKeys) {
+            outputZone.appendChild(document.createElement("label")).textContent = key;
+
+            let out = outputZone.appendChild(document.createElement("input"));
+
+            out.setAttribute("key", key);
+            out.readOnly = true;
+        }
     } catch (exc) {
         alert(exc.message);
+    }
+});
+
+inputZone.addEventListener("input", function () {
+    let inputs = {};
+
+    try {
+        for (let inp of inputZone.querySelectorAll("input[key]")) {
+            let value = +inp.value;
+
+            if (!Number.isFinite(value)) throw new Error("Invalid value");
+
+            inputs[inp.getAttribute("key")] = +inp.value;
+        }
+
+        let outputs = net.run(inputs);
+
+        for (let out of outputZone.querySelectorAll("input[key]")) out.value = outputs[out.getAttribute("key")].toFixed(3);
+    } catch (exc) {
+        for (let out of outputZone.querySelectorAll("input[key]")) out.value = "";
     }
 });
